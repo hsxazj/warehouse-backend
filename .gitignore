@@ -1,0 +1,12 @@
+**/target
+**/.idea/**
+**/**.iml
+
+*.xlsx
+!template_for_user_import.xlsx
+
+*.log
+
+logs
+
+**/logs

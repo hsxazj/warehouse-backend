@@ -1,0 +1,11 @@
+server:
+  port: 8888
+spring:
+  # ======================mysql==================
+  datasource:
+    username: root
+    url: jdbc:mysql://1.117.62.42:3307/warehouse-management-cloud?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=Asia/Shanghai&rewriteBatchedStatements=true
+    password: Zhfdzy1390892
+  servlet:
+    multipart:
+      max-file-size: 200MB

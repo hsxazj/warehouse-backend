@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.homework.mapper.MaterialMapper">
+
+    <select id="getTypeList" resultType="org.homework.pojo.vo.MaterialTypeVo">
+        select id as materialId,
+               name
+        from material;
+    </select>
+    <select id="getStock" resultType="org.homework.pojo.bo.MaterialStockCheck">
+        select m.id, m.name, m.stock, om.quantity
+        from material m
+                 join order_material om on m.id = om.material_id
+        where om.order_id = #{orderId};
+    </select>
+
+</mapper>

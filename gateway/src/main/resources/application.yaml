@@ -1,0 +1,34 @@
+server:
+  port: 9527
+
+spring:
+  # ======================rabbit mq==================
+  rabbitmq:
+    host: 1.117.62.42
+    port: 5672
+    username: root
+    password: Zhfdzy1390892
+  application:
+    name: gateway
+  
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 106.53.14.227:8848
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      routes:
+        - id: main-service
+          uri: lb://main-service
+          predicates:
+            - Path=/main-service/**
+          filters:
+            - RewritePath=/main-service/(?<segment>.*), /$\{segment}
+        - id: log-service
+          uri: lb://log-service
+          predicates:
+            - Path=/log-service/**
+          filters:
+            - RewritePath=/log-service/(?<segment>.*), /$\{segment}

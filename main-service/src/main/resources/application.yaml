@@ -1,0 +1,64 @@
+# TODO 修改配置文件
+
+server:
+  port: 2000
+
+spring:
+  
+  mail:
+    # 这里使用的是qq的邮件服务
+    host: smtp.qq.com
+    password: yourPassword
+    username: yourQQEmail
+    default-encoding: UTF-8
+  
+  # ======================rabbit mq==================
+  rabbitmq:
+    host: yourRabbitMqHost
+    port: yourRabbitMqPort
+    username: yourRabbitMqUserName
+    # 这边是为了检测MQ服务是否健康，我们使用的是15672（docker-compose文件在根目录中）
+    check_port: yourRabbitMqCheckPort
+    password: yourRabbitMqPassword
+    template:
+      reply-timeout: 100
+      receive-timeout: 100
+  data:
+    # ======================redis==================
+    redis:
+      host: yourRedisHost
+      password: yourRedisPassword
+      database: 0
+      port: yourRedisPasswordPort
+      # 这边是用作登录校验的key
+      LOGIN_KEY: yourLoginKey
+    # ======================mongodb==================
+    mongodb:
+      host: yourMongodbHost
+      port: yourMongodbPort
+      database: yourTableName
+      username: yourUserName
+      password: yourPassword
+      # 储存用户信息的库
+      authentication-database: yourAuthenticationDatabase
+  application:
+    name: main-service
+  cloud:
+    # ======================nacos==================
+    nacos:
+      discovery:
+        # Nacos服务注册中心地址 host+端口
+        server-addr: yourNacosAddress
+        # 注册进nacos的，用来让网关访问此实例的ip，根据实际情况修改
+        ip: 127.0.0.1
+        # 注册进nacos的，用来让网关访问此实例的port，根据实际情况修改
+        port: 2000
+    openfeign:
+      httpclient:
+        hc5:
+          enabled: true
+  # ======================mysql==================
+  datasource:
+    url: jdbc:mysql://yourMysqlHost:yourMysqlPort/warehouse-management-cloud?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=Asia/Shanghai&rewriteBatchedStatements=true
+    username: yourUserName
+    password: yourPassword
